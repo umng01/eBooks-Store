@@ -1,38 +1,119 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+body {
+  overflow-x: hidden;
+  background-image: linear-gradient(to right, pink, salmon,rgb(240, 106, 240), aqua, lightgreen,  teal);
+  font-family: 'Kalam', cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-image {
+  background: url(https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 80vh;
+  position: relative;
+  background-attachment: fixed;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.filter:after {
+  background-color: rgba(0, 0, 0, 0.4);
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.card-title {
+  overflow: hidden;
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+  font-size: 16px;
+}
+.button{
+  height: 60px;
+  width: 60px;
+}
+.button-click{
+    line-height: 1.5;
+    background-color: #fa429e;
+    padding: 10px 28px;
+    display: inline-block;
+    border-radius: 30px;
+    color: black;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-family: inherit;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    transition: color 0.3s ease;
+}
+.button-click::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background-color: white;
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+.button-click::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background-color: black;
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+.button-click:hover::before{
+  width: 100%;
+}
+.button-click:hover{
+  color: #fa429e;
+  background-color: black;
+}
+.btn-link{
+  padding: 15px;
+  color: #fa429e;
+  background-color: black;
+  border-radius: 10px;
+  text-decoration: none;
+
+}
+.modal-footer{
+  display:flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
-
-.App-link {
-  color: #61dafb;
+.btn-link:hover{
+  background-color: #fa429e;
+  color: black;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cards{
+  padding-left: 30px;
+}
+.closed{
+  border-radius: 50%;
+  background-color: #fa429e;
+  color: black;
+  font-weight: bold;
+}
+.closed:hover{
+  background-color: black;
+  color: #fa429e;
+}
+.block{
+  margin-left: 30px;
 }
