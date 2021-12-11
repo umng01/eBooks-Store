@@ -1,30 +1,41 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 import {
-  InputGroup,Input,InputGroupAddon,Button,FormGroup,Label,Spinner
-} from 'reactstrap';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
-import Books from './Books.jsx';
+  InputGroup,
+  Input,
+  InputGroupAddon,
+  Button,
+  FormGroup,
+  Label,
+  Spinner,
+} from "reactstrap";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import Books from "./Books.jsx";
+
 function App() {
-  // States
+
+
   const [maxResults, setMaxResults] = useState(12);
   const [startIndex, setStartIndex] = useState(1);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
   const [cards, setCards] = useState([]);
-  // Handle Search
+  
+
+
   const handleSubmit = () => {
     setLoading(true);
     if (maxResults > 50 || maxResults < 1) {
-      toast.error('Max results must be between 1 and 50');
+      toast.error("Max results must be between 1 and 50");
     } else {
       axios
         .get(
           `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=${maxResults}&startIndex=${startIndex}`
         )
-        .then(res => {
+        .then((res) => {
           if (startIndex >= res.data.totalItems || startIndex < 1) {
             toast.error(
               `Max results must be between 1 and ${res.data.totalItems}`
@@ -36,57 +47,59 @@ function App() {
             }
           }
         })
-        .catch(err => {
+        .catch((err) => {
           setLoading(true);
         });
     }
   };
-  // Main Show Case
+
+  
   const mainHeader = () => {
     return (
-      <div className='main-image d-flex justify-content-center align-items-center flex-column'>
-        {/* Overlay */}
-        <div className='filter'></div>
-        <h1
-          className='display-2 text-center text-white mb-3'
-          style={{ zIndex: 2 }}
-        >eBooks For You
+      <div className="main-image d-flex justify-content-center align-items-center flex-column">
+        <div className="filter"></div>
+        <h1 className="display-2 text-center mb-3 title" >
+          eBooks For You
         </h1>
-        <div style={{ width: '60%', zIndex: 2 }}>
-          <InputGroup size='lg' className='mb-3 '>
-            <Input 
-              className='input-book-name'
-              placeholder='Search an eBook'
+        <div style={{ width: "60%", zIndex: 2 }}>
+          <InputGroup size="lg" className="mb-3 ">
+            <Input
+              className=" input"
+              placeholder="Search an eBook"
               value={query}
-              onChange={e => setQuery(e.target.value)}
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <InputGroupAddon addonType='append'>
-              <Button color='secondary' onClick={handleSubmit} className='button'>
-                <i className='fas fa-search'></i>
+            <InputGroupAddon addonType="append">
+              <Button onClick={handleSubmit} className="button">
+                <i className="fas fa-search"></i>
               </Button>
             </InputGroupAddon>
           </InputGroup>
-          <div className='d-flex text-white justify-content-center'>
-            <FormGroup >
-              <Label for='maxResults'>Max Results</Label>
+          <div className="d-flex text-white justify-content-center">
+            <FormGroup>
+              <Label for="maxResults" className="label">
+                Max Results
+              </Label>
               <Input
-                type='number'
-                id='maxResults'
-                className='block'
-                placeholder='Max Results'
+                type="number"
+                id="maxResults"
+                className=" input"
+                placeholder="Max Results"
                 value={maxResults}
-                onChange={e => setMaxResults(e.target.value)}
+                onChange={(e) => setMaxResults(e.target.value)}
               />
             </FormGroup>
-            <FormGroup className='ml-5'>
-              <Label for='startIndex'>Start Index</Label>
+            <FormGroup className="ml-5">
+              <Label for="startIndex" className="label">
+                Start Index
+              </Label>
               <Input
-                type='number'
-                id='startIndex'
-                className='block'
-                placeholder='Start Index'
+                type="number"
+                id="startIndex"
+                className="block input"
+                placeholder="Start Index"
                 value={startIndex}
-                onChange={e => setStartIndex(e.target.value)}
+                onChange={(e) => setStartIndex(e.target.value)}
               />
             </FormGroup>
           </div>
@@ -98,19 +111,19 @@ function App() {
   const handleCards = () => {
     if (loading) {
       return (
-        <div className='d-flex justify-content-center mt-3'>
-          <Spinner style={{ width: '3rem', height: '3rem' }} />
+        <div className="d-flex justify-content-center mt-3">
+          <Spinner className="spin"/>
         </div>
       );
     } else {
       const items = cards.map((item, i) => {
-        let thumbnail = '';
+        let thumbnail = "";
         if (item.volumeInfo.imageLinks) {
           thumbnail = item.volumeInfo.imageLinks.thumbnail;
         }
 
         return (
-          <div className='col-lg-4 mb-3' key={item.id}>
+          <div className="col-lg-4 mb-3" key={item.id}>
             <Books
               thumbnail={thumbnail}
               title={item.volumeInfo.title}
@@ -126,14 +139,14 @@ function App() {
         );
       });
       return (
-        <div className='container my-5'>
-          <div className='row'>{items}</div>
+        <div className="container my-5">
+          <div className="row">{items}</div>
         </div>
       );
     }
   };
   return (
-    <div className='w-100 h-100'>
+    <div className="w-100 h-100">
       {mainHeader()}
       {handleCards()}
       <ToastContainer />

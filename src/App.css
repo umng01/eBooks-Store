@@ -1,24 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bree+Serif&family=Courgette&family=Fuzzy+Bubbles&family=Urbanist:wght@100&display=swap");
 body {
   overflow-x: hidden;
-  background-image: linear-gradient(to right, pink, salmon,rgb(240, 106, 240), aqua, lightgreen,  teal);
-  font-family: 'Kalam', cursive;
+  background-image: linear-gradient(#999999, #888699);
 }
 
 .main-image {
-  background: url(https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80);
+  background: url(https://cms.flipbuilder.com/wp-content/uploads/2021/09/Free-Animation-Textbook-Maker-3.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   position: relative;
   background-attachment: fixed;
 }
-
+.input {
+  background: #f8f4ff;
+}
+.label {
+  color: black;
+  margin-left: 90px;
+}
 .filter:after {
-  background-color: rgba(0, 0, 0, 0.4);
-  content: '';
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  content: "";
   display: block;
   height: 100%;
   left: 0;
@@ -27,36 +32,38 @@ body {
   width: 100%;
   z-index: 1;
 }
-
+.title {
+  color: black;
+}
 .card-title {
   overflow: hidden;
-  color: rgba(0, 0, 0, 0.85);
+  color: #f8f4ff;
   font-weight: 500;
   font-size: 16px;
 }
-.button{
+.button {
   height: 60px;
   width: 60px;
 }
-.button-click{
-    line-height: 1.5;
-    background-color: #fa429e;
-    padding: 10px 28px;
-    display: inline-block;
-    border-radius: 30px;
-    color: black;
-    font-weight: 500;
-    text-transform: capitalize;
-    font-family: inherit;
-    cursor: pointer;
-    user-select: none;
-    position: relative;
-    overflow: hidden;
-    vertical-align: middle;
-    transition: color 0.3s ease;
+.button-click {
+  line-height: 1.5;
+  background-color: #885df1;
+  padding: 10px 28px;
+  display: inline-block;
+  border-radius: 30px;
+  color: white;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-family: inherit;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  transition: color 0.3s ease;
 }
-.button-click::after{
-  content: '';
+.button-click::after {
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -66,8 +73,8 @@ body {
   z-index: -1;
   transition: width 0.3s ease;
 }
-.button-click::before{
-  content: '';
+.button-click::before {
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -77,43 +84,59 @@ body {
   z-index: -1;
   transition: width 0.3s ease;
 }
-.button-click:hover::before{
+.button-click:hover::before {
   width: 100%;
 }
-.button-click:hover{
-  color: #fa429e;
-  background-color: black;
+.button-click:hover {
+  color: #885df1;
+  background-color: white;
 }
-.btn-link{
+.btn-link {
   padding: 15px;
-  color: #fa429e;
-  background-color: black;
+  background-color: #885df1;
+  color: #f8f4ff;
   border-radius: 10px;
   text-decoration: none;
-
 }
-.modal-footer{
-  display:flex;
+.modal-body {
+  background-color: #f8f4ff;
+}
+.modal-footer {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.btn-link:hover{
-  background-color: #fa429e;
+.btn-link:hover {
+  background-color: #885df1;
   color: black;
 }
-.cards{
+.card {
+  border-color: black;
+  color: #f8f4ff;
+  width: 233px;
+  padding: 15px;
+  background-color: rgb(100, 98, 98);
+  border-radius: 15px;
+  box-shadow: rgb(255, 255, 255) 0px 14px 28px, rgb(255, 255, 255) 0px 10px 10px;
+}
+.cards {
   padding-left: 30px;
-}
-.closed{
-  border-radius: 50%;
-  background-color: #fa429e;
   color: black;
+  height: 233px;
+}
+.closed {
+  border-radius: 50%;
+  background-color: #885df1;
+  color: #f8f4ff;
   font-weight: bold;
 }
-.closed:hover{
-  background-color: black;
-  color: #fa429e;
+.closed:hover {
+  color: white;
 }
-.block{
+.block {
   margin-left: 30px;
+}
+.spin {
+  width: 3rem;
+  height: 3rem;
 }

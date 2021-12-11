@@ -3,12 +3,11 @@ import './App.css';
 import { Card, CardTitle, CardImg, CardBody, Button, Modal } from 'reactstrap';
 const Books = ({thumbnail,title,pageCount,language,description,authors,publisher,previewLink,infoLink
 }) => {
-  // States
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   return (
-    <Card style={{ width: '233px' }} className='m-auto '>
+    <Card className='m-auto card '>
       <CardImg
         top
         style={{ width: '100%', height: '233px' }}
@@ -17,7 +16,7 @@ const Books = ({thumbnail,title,pageCount,language,description,authors,publisher
       />
       <CardBody>
         <CardTitle className='card-title'>{title}</CardTitle>
-        <Button onClick={toggle} className='button-click'>More info</Button>
+        <Button onClick={toggle} className='button-click'>More Info</Button>
       </CardBody>
       <Modal isOpen={modal} toggle={toggle}>
         <div className='modal-header d-flex justify-content-right'>
@@ -33,7 +32,7 @@ const Books = ({thumbnail,title,pageCount,language,description,authors,publisher
         </div>
         <div className='modal-body'>
           <div className='d-flex justify-content-between ml-3'>
-            <img className="image" src={thumbnail} alt={title} style={{ height: '233px' }} />
+            <img className="image" src={thumbnail} alt={title} />
             <div className='cards'>
               <p>Author : {authors}</p>
               <p>Publisher : {publisher}</p>
